@@ -43,7 +43,7 @@ async def signup(user: SignupModel = Body(...)):
         ## Create a user
         This requires the following
         ```
-                username:int
+                username:str
                 email:str
                 password:str
                 is_staff:bool
