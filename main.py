@@ -14,6 +14,10 @@ from fastapi.openapi.utils import get_openapi
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"message": "Pizza Delivery API is running"}
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
@@ -65,12 +69,8 @@ app.openapi = custom_openapi
 def get_config():
     return settings()
 
-@app.get("/")
-def root():
-    return {"message": "Pizza Delivery API is running"}
     
 app.include_router(auth_router)
 app.include_router(order_router)
-
 
 
