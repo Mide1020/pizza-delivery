@@ -65,11 +65,9 @@ app.openapi = custom_openapi
 def get_config():
     return settings()
 
-# @app.exception_handler(AuthJWTException)
-# def authjwt_exception_handler(request, exc):
-#     return JSONResponse(
-#         status_code=exc.status_code,
-#         content={"detail": exc.message})
+@app.get("/")
+def root():
+    return {"message": "Pizza Delivery API is running"}
     
 app.include_router(auth_router)
 app.include_router(order_router)
