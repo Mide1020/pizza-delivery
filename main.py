@@ -6,6 +6,7 @@ from fastapi_jwt_auth2.exceptions import AuthJWTException
 from fastapi.responses import JSONResponse
 from schema import settings
 import inspect, re
+from database import Base, engine
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
 from fastapi.openapi.utils import get_openapi
@@ -13,6 +14,8 @@ from fastapi.openapi.utils import get_openapi
 
 
 app = FastAPI()
+
+Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():
