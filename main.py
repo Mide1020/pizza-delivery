@@ -15,7 +15,10 @@ from fastapi.openapi.utils import get_openapi
 
 app = FastAPI()
 
-Base.metadata.create_all(bind=engine)
+@app.on_event("startup")
+def startup():
+    Base.metadata.create_all(bind=engine)
+
 
 @app.get("/")
 def root():
