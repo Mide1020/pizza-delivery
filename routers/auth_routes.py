@@ -127,3 +127,6 @@ async def refresh_token(Authorize: AuthJWT = Depends()):
   access_token = Authorize.create_access_token(subject=current_user)
   return jsonable_encoder({"access": access_token})
   
+
+print(Session)
+print(engine)
