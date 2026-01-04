@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 class SignupModel(BaseModel):
+    
     id: Optional[int] = None
     username: str
     email: str

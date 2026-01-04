@@ -4,9 +4,11 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Local fallback
 if not DATABASE_URL:
-    DATABASE_URL = "postgresql://postgres:1245@localhost/pizza_delivery"
+    DATABASE_URL = "postgresql://postgres:1234@127.0.0.1:5432/pizza_delivery"
+
+   
+
     engine = create_engine(DATABASE_URL, echo=True)
 else:
     
