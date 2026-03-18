@@ -20,11 +20,12 @@ app = FastAPI()
 @app.on_event("startup")
 def startup():
     try:
-        with engine.connect() as conn:
-            print("✅ Database connection successful")
+        from database import Base
+        from models import User, Order  # adjust to your actual model names
+        Base.metadata.create_all(bind=engine)
+        print("✅ Tables created successfully")
     except Exception as e:
-        print("❌ Database connection failed:", e)
-
+        print("❌ Startup failed:", e)
 
 @app.get("/")
 def root():

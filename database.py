@@ -11,7 +11,8 @@ if not DATABASE_URL:
     DATABASE_URL = "postgresql+psycopg2://postgres:1234@127.0.0.1:5432/pizza_delivery"
 
 
-connect_args = {"sslmode": "require"} if "render.com" in DATABASE_URL else {}
+connect_args = {"sslmode": "require"} if DATABASE_URL and ("render.com" in DATABASE_URL or "supabase.co" in DATABASE_URL) else {}
+
 
 
 engine = create_engine(
